@@ -1,0 +1,650 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SYST3M_ARCH // LEAD_DEV Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+
+        @keyframes antigravity {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+        }
+        .animate-antigravity { animation: antigravity 6s ease-in-out infinite; }
+
+        .glow-sm:hover { text-shadow: 0 0 8px rgba(165, 231, 255, 0.6); }
+        
+        .glass-card {
+            backdrop-filter: blur(16px);
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(133, 147, 153, 0.2);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important, 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important, 
+                        border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important, 
+                        background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .glass-card:hover {
+            border-color: #00d2ff !important;
+            box-shadow: 0 15px 30px -5px rgba(0, 210, 255, 0.3), 
+                        0 0 20px rgba(237, 177, 255, 0.2) !important;
+            transform: translateY(-8px) scale(1.02) !important;
+            background: rgba(35, 35, 35, 0.85);
+        }
+        
+        .tech-badge {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            cursor: pointer;
+        }
+        .tech-badge:hover {
+            border-color: #00d2ff !important;
+            background: rgba(0, 210, 255, 0.1) !important;
+            color: #a5e7ff !important;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        header {
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            background: rgba(19, 19, 19, 0.7) !important;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.15) !important;
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+        }
+        header.navbar-scrolled {
+            background: rgba(10, 10, 10, 0.85) !important;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 210, 255, 0.1);
+        }
+        
+        button, a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        }
+
+        input, textarea {
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out !important;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .gradient-border {
+            position: relative;
+            background: rgba(10, 10, 10, 0.8);
+        }
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(to right, #00d2ff, #edb1ff);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+        .gradient-border:hover::before { opacity: 1; }
+        .terminal-header::before {
+            content: '● ● ●';
+            color: #444;
+            font-size: 10px;
+            letter-spacing: 2px;
+            padding: 8px 12px;
+            display: block;
+            border-bottom: 1px solid rgba(133, 147, 153, 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3c494e; border-radius: 2px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#e5e2e1",
+                        "secondary-fixed": "#f9d8ff",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-primary-fixed-variant": "#004e60",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface": "#131313",
+                        "outline": "#859399",
+                        "outline-variant": "#3c494e",
+                        "surface-container-highest": "#353534",
+                        "on-secondary-fixed": "#320046",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "inverse-primary": "#00677f",
+                        "surface-tint": "#47d6ff",
+                        "secondary": "#edb1ff",
+                        "primary-fixed": "#b6ebff",
+                        "surface-bright": "#3a3939",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#bbc9cf",
+                        "on-secondary": "#520070",
+                        "surface-variant": "#353534",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#6e208c",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#e498ff",
+                        "on-tertiary-container": "#4f4e4e",
+                        "on-tertiary": "#313030",
+                        "on-background": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "primary": "#a5e7ff",
+                        "tertiary": "#dfdcdb",
+                        "on-secondary-fixed-variant": "#6e208c",
+                        "primary-fixed-dim": "#47d6ff",
+                        "surface-container-high": "#2a2a2a",
+                        "tertiary-container": "#c3c0c0",
+                        "on-tertiary-fixed": "#1c1b1b",
+                        "surface-container": "#201f1f",
+                        "on-primary-container": "#00566a",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed": "#001f28",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-dim": "#131313",
+                        "background": "#131313",
+                        "on-primary": "#003543",
+                        "secondary-fixed-dim": "#edb1ff",
+                        "primary-container": "#00d2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "stack-sm": "12px",
+                        "container-max": "1200px",
+                        "stack-md": "24px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30 selection:text-primary overflow-x-hidden custom-scrollbar">
+<!-- Background Atmospheric Elements -->
+
+<div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,210,255,0.05),transparent_70%)] pointer-events-none z-0"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg text-primary tracking-tighter cursor-pointer active:scale-95 transition-all">
+                SYST3M_ARCH
+            </div>
+<div class="hidden md:flex gap-8 items-center font-label-md text-label-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer" href="#experience">ST4CK</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer" href="#experience">EXP3RIENCE</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer" href="#projects">PROJ3CTS</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer" href="#certs">C3RTS</a>
+</div>
+<button class="bg-primary text-on-primary font-label-md px-6 py-2 rounded shadow-[0_0_15px_rgba(165,231,255,0.3)] hover:shadow-[0_0_20px_rgba(165,231,255,0.5)] transition-all cursor-pointer active:scale-95" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                CONTACT
+            </button>
+</nav>
+</header>
+<main class="relative z-10 pt-20">
+<!-- Hero Section -->
+<section class="min-h-[90vh] flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="glass-card p-10 md:p-16 rounded-xl w-full max-w-4xl relative overflow-hidden scroll-reveal" data-reveal-delay="50">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-[100px]"></div>
+<div class="flex flex-col md:flex-row items-center gap-10">
+<div class="flex-1 space-y-6">
+<div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded text-primary font-label-sm text-label-sm">
+                            SYSTEM_INITIALIZED: LEAD_DEV.EXE
+                        </div>
+<h1 class="font-headline-xl text-headline-xl leading-none">GANDIKOTA SAI&nbsp;<div class="">KOWSHIK</div></h1>
+<p class="text-body-lg text-on-surface-variant max-w-lg">
+                            Full-Stack Engineer specializing in FastAPI, React, and Generative AI. Bridging the gap between academic rigor and cyberpunk innovation.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<span class="tech-badge px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm">FASTAPI</span>
+<span class="tech-badge px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm">REACT</span>
+<span class="tech-badge px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm">MONGODB</span>
+<span class="tech-badge px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm">GEN_AI</span>
+</div>
+</div>
+<div class="relative group animate-antigravity">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden border-2 border-primary/30 group-hover:border-primary transition-all">
+<img class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" data-alt="A portrait of a futuristic software engineer with sharp features, wearing a sleek tech-wear jacket with glowing fiber-optic threads. The lighting is dominated by electric blue and deep purple neon glares, set against a dark, high-tech laboratory background filled with monitors displaying complex code and data visualizations. The aesthetic is sophisticated academic cyberpunk, clean and high-contrast." src="assets/avatar.png">
+</div>
+<div class="absolute -inset-4 border border-primary/20 rounded-xl -z-10 animate-float"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Experience Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="experience">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 scroll-reveal" data-reveal-delay="0">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-2">TIMELINE_LOGS</h2>
+<p class="text-on-surface-variant font-label-md">Professional progression and community impact</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant">
+<button class="px-6 py-2 font-label-md text-label-md rounded bg-primary-container text-on-primary-container transition-all" id="toggle-tech" onclick="switchTimeline('tech')">TECH_ROLES</button>
+<button class="px-6 py-2 font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-all" id="toggle-comm" onclick="switchTimeline('comm')">COMMUNITY</button>
+</div>
+</div>
+<div class="relative scroll-reveal" data-reveal-delay="100">
+<!-- Vertical Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary via-secondary to-transparent hidden md:block"></div>
+<div class="space-y-12" id="timeline-content" style="opacity: 1;">
+                    <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 translate-y-4 transition-all duration-500 delay-[0ms]" style="opacity: 1; transform: translateY(0);">
+                        <!-- Desktop Dot -->
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-background border-2 border-primary rounded-sm transform md:-translate-x-1/2 z-20 shadow-[0_0_10px_rgba(0,210,255,0.5)]"></div>
+                        
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                            <div class="glass-card p-6 rounded-lg gradient-border">
+                                <div class="flex items-center gap-3 mb-2 md:justify-end">
+                                    <span class="material-symbols-outlined text-primary text-sm">terminal</span>
+                                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">AI &amp; CLOUD INTERN</h3>
+                                </div>
+                                <p class="text-on-surface font-bold mb-1">NEURAL_DYNE_LABS</p>
+                                <p class="text-on-surface-variant font-label-sm text-label-sm mb-4">Q3 2023 - PRESENT</p>
+                                <p class="text-body-md text-on-surface-variant">Optimizing inference latency for large-scale RAG pipelines and managing high-availability Kubernetes clusters.</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 translate-y-4 transition-all duration-500 delay-[100ms]" style="opacity: 1; transform: translateY(0);">
+                        <!-- Desktop Dot -->
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-background border-2 border-primary rounded-sm transform md:-translate-x-1/2 z-20 shadow-[0_0_10px_rgba(0,210,255,0.5)]"></div>
+                        
+                        <div class="w-full md:w-1/2 md:order-2 md:pl-12">
+                            <div class="glass-card p-6 rounded-lg gradient-border">
+                                <div class="flex items-center gap-3 mb-2 ">
+                                    <span class="material-symbols-outlined text-primary text-sm">cloud</span>
+                                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">AWS GEN AI INTERN</h3>
+                                </div>
+                                <p class="text-on-surface font-bold mb-1">AMAZON_WEB_SERVICES</p>
+                                <p class="text-on-surface-variant font-label-sm text-label-sm mb-4">Q1 2023 - Q2 2023</p>
+                                <p class="text-body-md text-on-surface-variant">Developed automated benchmarking tools for Bedrock foundational models across multi-region deployments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+</section>
+<!-- Projects Grid -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="projects">
+<div class="mb-12 scroll-reveal" data-reveal-delay="0">
+<h2 class="font-headline-lg text-headline-lg mb-2">ACTIVE_DEPLOYMENTS</h2>
+<p class="text-on-surface-variant font-label-md">High-precision software solutions</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+</div>
+</section>
+<!-- Certifications -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto bg-surface-container-lowest/50 rounded-3xl" id="certs">
+<div class="mb-12 text-center scroll-reveal" data-reveal-delay="0">
+<h2 class="font-headline-lg text-headline-lg mb-2">VALIDATED_SKILLS</h2>
+<p class="text-on-surface-variant font-label-md">Professional credentials from industry leaders</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="contact">
+<div class="max-w-3xl mx-auto glass-card rounded-xl overflow-hidden p-1 md:p-0 scroll-reveal" data-reveal-delay="0">
+<div class="terminal-header hidden md:block"></div>
+<div class="p-8 md:p-12">
+<h2 class="font-headline-lg text-headline-lg mb-8 text-center">OPEN_CHANNEL</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="contact-name">SOURCE_NAME</label>
+<input id="contact-name" name="name" required class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-all text-on-surface placeholder:text-outline-variant" placeholder="IDENTITY_REQUIRED" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="contact-email">IP_ADDR_EMAIL</label>
+<input id="contact-email" name="email" required class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-all text-on-surface placeholder:text-outline-variant" placeholder="ADDRESS@DOMAIN.SYS" type="email">
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="contact-subject">TRANSMISSION_SUBJECT</label>
+<input id="contact-subject" name="subject" required class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-all text-on-surface placeholder:text-outline-variant" placeholder="ENCRYPTED_HEADER" type="text">
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="contact-message">DATA_PAYLOAD</label>
+<textarea id="contact-message" name="message" required class="w-full bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-primary focus:ring-0 transition-all text-on-surface placeholder:text-outline-variant resize-none" placeholder="INPUT_MESSAGE_STREAM..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-lg shadow-[0_0_20px_rgba(0,210,255,0.2)] hover:shadow-[0_0_30px_rgba(0,210,255,0.4)] transition-all flex items-center justify-center gap-2 group" type="submit">
+                            <span class="submit-text">INITIATE_TRANSMISSION</span>
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-base border-t border-outline-variant/50 bg-surface">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-stack-md max-w-container-max mx-auto text-secondary font-label-sm text-label-sm">
+<div class="font-headline-lg text-headline-lg text-secondary mb-6 md:mb-0">
+                TERMINAL_OS
+            </div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">GITHUB</a>
+<a class="hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">LINKEDIN</a>
+<a class="hover:text-primary transition-colors underline-offset-4 hover:underline" href="#">DOCS</a>
+</div>
+<div class="text-on-tertiary-fixed-variant">
+                © 2024 TERMINAL_OS. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-4 pointer-events-none"></div>
+<script>
+        const techExperience = [
+          { "role": "AI Web Developer", "company": "InAmigos Foundation", "date": "June 2026 - Present", "tech": ["Generative AI", "Web Dev", "Python"] },
+          { "role": "AWS GEN AI Intern", "company": "EduSkills Foundation", "date": "April 2026 - June 2026", "tech": ["AWS", "Generative AI", "Cloud"] },
+          { "role": "AI & Cloud Intern", "company": "Edunet Foundation", "date": "Sept 2025 - Dec 2025", "tech": ["Cloud", "AI", "Python"] },
+          { "role": "Google AI-ML Intern", "company": "EduSkills Foundation", "date": "July 2025 - Sept 2025", "tech": ["Machine Learning", "Google Cloud", "Python"] }
+        ];
+
+        const nonTechExperience = [
+          { "role": "Campus Ambassador", "organization": "Unstop", "date": "Sept 2025 - May 2026", "impact": "Led campus-wide engagement initiatives and drove platform awareness." },
+          { "role": "Student Ambassador", "organization": "LetsUpgrade", "date": "Aug 2025 - Sept 2025", "impact": "Promoted technical learning initiatives and upskilling programs." }
+        ];
+
+        const projectsData = [
+          { "title": "DayZero AI", "category": "Generative AI", "description": "An AI-powered startup idea validation engine utilizing advanced text generation models.", "tech": ["React", "FastAPI", "Supabase", "Tailwind CSS"], "github": "https://github.com/yourusername/dayzero-ai" },
+          { "title": "WasteVision", "category": "Computer Vision", "description": "A computer vision application designed for automated waste classification and sorting.", "tech": ["Python", "YOLOv8", "Streamlit", "OpenCV"], "github": "https://github.com/yourusername/wastevision" },
+          { "title": "Insta Repo", "category": "Software Development", "description": "A dedicated repository and application designed to streamline data processing and management.", "tech": ["Python", "FastAPI", "React", "MongoDB"], "github": "https://github.com/yourusername/insta-repo" }
+        ];
+
+        const certificationsData = [
+          { "title": "Fundamentals of Deep Learning", "issuer": "NVIDIA", "skills": ["Neural Networks", "Computer Vision"] },
+          { "title": "Generative AI in Action", "issuer": "IBM", "skills": ["Generative AI", "Applied AI"] },
+          { "title": "Google AI Essentials", "issuer": "Google", "skills": ["AI Principles", "Machine Learning Basics"] },
+          { "title": "Google Prompting Essentials", "issuer": "Google", "skills": ["Prompt Engineering", "LLMs"] },
+          { "title": "AI Fundamentals", "issuer": "IBM", "skills": ["Artificial Intelligence", "Data Science"] },
+          { "title": "Python for Data Science", "issuer": "Edunet Foundation", "skills": ["Data Analysis", "Pandas"] },
+          { "title": "Web Development Fundamentals", "issuer": "IBM", "skills": ["HTML/CSS", "JavaScript"] },
+          { "title": "Python for Beginners", "issuer": "Microsoft", "skills": ["Python", "Programming Fundamentals"] }
+        ];
+
+        function renderProjects() {
+            const projectsGrid = document.querySelector('#projects .grid');
+            if (!projectsGrid) return;
+            
+            const projectImages = {
+                "DayZero AI": "assets/dayzero.png",
+                "WasteVision": "assets/wastevision.png",
+                "Insta Repo": "assets/instarepo.png"
+            };
+
+            projectsGrid.innerHTML = projectsData.map((project, idx) => {
+                const img = projectImages[project.title] || "assets/instarepo.png";
+                const borderAccent = idx % 2 === 0 ? 'text-primary' : 'text-secondary';
+                const bgAccent = idx % 2 === 0 ? 'bg-primary/5 border-primary/20 text-primary' : 'bg-secondary/5 border-secondary/20 text-secondary';
+                
+                return `
+                <div class="glass-card rounded-xl overflow-hidden flex flex-col scroll-reveal" data-reveal-delay="${idx * 100}">
+                    <div class="h-48 overflow-hidden">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${img}">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="font-headline-lg-mobile text-headline-lg-mobile ${borderAccent}">${project.title}</h3>
+                            <div class="flex gap-2">
+                                <a href="${project.github}" target="_blank" class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer text-[20px]">link</a>
+                                <span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer text-[20px]">terminal</span>
+                            </div>
+                        </div>
+                        <p class="text-on-surface-variant text-body-md mb-6 flex-1">
+                            ${project.description}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tech.map(t => `<span class="tech-badge text-[10px] px-2 py-0.5 ${bgAccent} font-label-sm">${t}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderCertifications() {
+            const certsGrid = document.querySelector('#certs .grid');
+            if (!certsGrid) return;
+            
+            certsGrid.innerHTML = certificationsData.map((cert, idx) => {
+                const borderAccent = idx % 2 === 0 ? 'border-primary' : 'border-secondary';
+                const textAccent = idx % 2 === 0 ? 'text-primary' : 'text-secondary';
+                const bgAccent = idx % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10';
+                
+                const icon = cert.issuer.toLowerCase().includes('nvidia') ? 'verified' 
+                           : cert.issuer.toLowerCase().includes('ibm') ? 'database' 
+                           : cert.issuer.toLowerCase().includes('google') ? 'cloud' 
+                           : 'school';
+                
+                return `
+                <div class="scroll-reveal bg-surface-container p-6 border-l-4 ${borderAccent} flex items-center gap-4 hover:bg-surface-container-high transition-colors" data-reveal-delay="${(idx % 3) * 100}">
+                    <div class="w-12 h-12 ${bgAccent} rounded flex items-center justify-center">
+                        <span class="material-symbols-outlined ${textAccent}">${icon}</span>
+                    </div>
+                    <div>
+                        <h4 class="font-label-md text-label-md ${textAccent}">${cert.issuer.toUpperCase()}</h4>
+                        <p class="text-on-surface font-bold">${cert.title}</p>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            ${cert.skills.map(s => `<span class="text-[10px] font-label-sm text-on-surface-variant">${s.toUpperCase()}</span>`).join(' | ')}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function switchTimeline(type) {
+            const container = document.getElementById('timeline-content');
+            const techBtn = document.getElementById('toggle-tech');
+            const commBtn = document.getElementById('toggle-comm');
+            
+            // Update buttons
+            if (type === 'tech') {
+                techBtn.className = "px-6 py-2 font-label-md text-label-md rounded bg-primary-container text-on-primary-container transition-all";
+                commBtn.className = "px-6 py-2 font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-all";
+            } else {
+                commBtn.className = "px-6 py-2 font-label-md text-label-md rounded bg-primary-container text-on-primary-container transition-all";
+                techBtn.className = "px-6 py-2 font-label-md text-label-md rounded text-on-surface-variant hover:text-on-surface transition-all";
+            }
+
+            // Animate out
+            container.style.opacity = '0';
+            
+            const data = type === 'tech' ? techExperience : nonTechExperience;
+            
+            setTimeout(() => {
+                container.innerHTML = data.map((item, idx) => {
+                    const title = item.role;
+                    const subtitle = type === 'tech' ? item.company : item.organization;
+                    const date = item.date;
+                    const desc = type === 'tech' ? '' : item.impact;
+                    const icon = type === 'tech' ? 'terminal' : 'groups';
+                    
+                    const badges = type === 'tech' && item.tech
+                        ? `<div class="flex flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}">` + 
+                          item.tech.map(t => `<span class="tech-badge text-[10px] px-2 py-0.5 bg-primary/5 border border-primary/20 text-primary font-label-sm">${t}</span>`).join('') + 
+                          `</div>`
+                        : '';
+                    
+                    return `
+                    <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 translate-y-4 transition-all duration-500 delay-[${idx * 100}ms]" style="opacity: 1; transform: translateY(0);">
+                        <!-- Desktop Dot -->
+                        <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-background border-2 border-primary rounded-sm transform md:-translate-x-1/2 z-20 shadow-[0_0_10px_rgba(0,210,255,0.5)]"></div>
+                        
+                        <div class="w-full md:w-1/2 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:order-2 md:pl-12'}">
+                            <div class="glass-card p-6 rounded-lg gradient-border">
+                                <div class="flex items-center gap-3 mb-2 ${idx % 2 === 0 ? 'md:justify-end' : ''}">
+                                    <span class="material-symbols-outlined text-primary text-sm">${icon}</span>
+                                    <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">${title}</h3>
+                                </div>
+                                <p class="text-on-surface font-bold mb-1">${subtitle}</p>
+                                <p class="text-on-surface-variant font-label-sm text-label-sm mb-4">${date}</p>
+                                ${desc ? `<p class="text-body-md text-on-surface-variant">${desc}</p>` : ''}
+                                ${badges}
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+                container.style.opacity = '1';
+            }, 300);
+        }
+
+        // Scroll listener for sticky navbar glassmorphism
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('navbar-scrolled');
+            } else {
+                header.classList.remove('navbar-scrolled');
+            }
+        });
+
+        // Intersection Observer for scroll-triggered reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const delay = el.getAttribute('data-reveal-delay') || '0';
+                    setTimeout(() => {
+                        el.classList.add('revealed');
+                        // Clean up reveal classes after animation completes so hover transforms function correctly
+                        setTimeout(() => {
+                            el.classList.remove('scroll-reveal', 'revealed');
+                        }, 850);
+                    }, parseInt(delay));
+                    revealObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        // Toast notification helper
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded border backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-center gap-3 max-w-sm pointer-events-auto shadow-lg ${
+                type === 'success' 
+                ? 'bg-primary-container/20 border-primary/30 text-primary shadow-[0_0_15px_rgba(0,210,255,0.15)] font-semibold' 
+                : 'bg-error-container/20 border-error/30 text-error shadow-[0_0_15px_rgba(255,180,171,0.15)] font-semibold'
+            }`;
+            
+            const icon = document.createElement('span');
+            icon.className = 'material-symbols-outlined';
+            icon.textContent = type === 'success' ? 'check_circle' : 'error';
+            
+            const text = document.createElement('span');
+            text.className = 'font-label-sm text-label-sm tracking-wide';
+            text.textContent = message;
+            
+            toast.appendChild(icon);
+            toast.appendChild(text);
+            container.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.classList.remove('translate-y-4', 'opacity-0');
+            }, 10);
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4000);
+        }
+
+        // Initialize dynamic layouts
+        renderProjects();
+        renderCertifications();
+        switchTimeline('tech');
+
+        // Bind scroll reveal observer to all static and newly generated elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Form submission handling
+        const form = document.querySelector('#contact form');
+        if (form) {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitText = form.querySelector('.submit-text');
+            const submitIcon = form.querySelector('.material-symbols-outlined');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Set loading state
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+                const originalText = submitText.textContent;
+                submitText.textContent = 'TRANSMITTING...';
+                if (submitIcon) {
+                    submitIcon.textContent = 'sync';
+                    submitIcon.classList.add('animate-spin');
+                }
+
+                // Simulate network request
+                setTimeout(() => {
+                    showToast('MESSAGE SENT SUCCESSFULLY // SECURE LINK ESTABLISHED', 'success');
+                    form.reset();
+
+                    // Reset loading state
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    submitText.textContent = originalText;
+                    if (submitIcon) {
+                        submitIcon.textContent = 'send';
+                        submitIcon.classList.remove('animate-spin');
+                    }
+                }, 1500);
+            });
+        }
+    </script>
+
+
+</body></html>

@@ -264,15 +264,13 @@
 
     <header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30">
         <nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
-            <div
-                class="font-headline-lg text-headline-lg text-primary tracking-tighter cursor-pointer active:scale-95 transition-all">
-                Portfolio
-            </div>
             <div class="hidden md:flex gap-8 items-center font-label-md text-label-md">
                 <a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer"
-                    href="#experience">SKILLS</a>
+                    href="#profile">INTRO</a>
                 <a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer"
                     href="#experience">EXPERIENCE</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer"
+                    href="#education">EDUCATION</a>
                 <a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer"
                     href="#projects">PROJECTS</a>
                 <a class="text-on-surface-variant hover:text-primary transition-colors hover:glow-sm cursor-pointer"
@@ -281,24 +279,29 @@
             <button
                 class="bg-primary text-on-primary font-label-md px-6 py-2 rounded shadow-[0_0_15px_rgba(165,231,255,0.3)] hover:shadow-[0_0_20px_rgba(165,231,255,0.5)] transition-all cursor-pointer active:scale-95"
                 onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-                CONTACT
+                Let's Connect
             </button>
         </nav>
     </header>
 
     <main class="relative z-10 pt-20">
-        <section
+        <section id="profile"
             class="min-h-[90vh] flex flex-col justify-center items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="glass-card p-10 md:p-16 rounded-xl w-full max-w-4xl relative overflow-hidden scroll-reveal"
                 data-reveal-delay="50">
-                <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
-                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-[100px]"></div>
+                <div
+                    class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none z-0">
+                </div>
+                <div
+                    class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] pointer-events-none z-0">
+                </div>
                 <div class="flex flex-col md:flex-row items-center gap-10">
-                    <div class="flex-1 space-y-6">
+                    <div class="flex-1 space-y-6 relative z-10">
                         <h1 class="font-headline-xl text-headline-xl leading-none">GANDIKOTA SAI&nbsp;<div>KOWSHIK</div>
                         </h1>
                         <p class="text-body-lg text-on-surface-variant max-w-lg">
-                            Full-Stack AI Engineer specializing in FastAPI, React, and Generative AI.
+                            Final-year B.Tech student exploring the intersection of web development and AI. I combine
+                            academic foundations with hands-on experience in FastAPI, React, and Generative AI.
                         </p>
                         <div class="flex flex-wrap gap-3">
                             <span
@@ -317,14 +320,14 @@
                                 class="tech-badge px-4 py-2 bg-surface-container border border-outline-variant rounded font-label-sm text-label-sm">GEN_AI</span>
                         </div>
 
-                        <div class="flex gap-6 mt-4 pt-4 border-t border-outline-variant/30">
+                        <div class="flex gap-6 mt-4 pt-4 border-t border-outline-variant/30 relative z-20">
                             <a href="https://github.com/GSaikowshik" target="_blank" rel="noopener noreferrer"
-                                class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors hover:glow-sm font-label-md">
+                                class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors hover:glow-sm font-label-md cursor-pointer">
                                 <span class="material-symbols-outlined text-[20px]">code_blocks</span> GITHUB
                             </a>
                             <a href="https://linkedin.com/in/gandikotasaikowshik" target="_blank"
                                 rel="noopener noreferrer"
-                                class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors hover:glow-sm font-label-md">
+                                class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors hover:glow-sm font-label-md cursor-pointer">
                                 <span class="material-symbols-outlined text-[20px]">work</span> LINKEDIN
                             </a>
                         </div>
@@ -367,6 +370,16 @@
             </div>
         </section>
 
+        <!-- Education Section -->
+        <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="education">
+            <div class="mb-12 scroll-reveal" data-reveal-delay="0">
+                <h2 class="font-headline-lg text-headline-lg mb-2">ACADEMIC_RECORDS</h2>
+                <p class="text-on-surface-variant font-label-md">Educational history and qualifications</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter" id="education-grid">
+            </div>
+        </section>
+
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="projects">
             <div class="mb-12 scroll-reveal" data-reveal-delay="0">
                 <h2 class="font-headline-lg text-headline-lg mb-2">ACTIVE_DEPLOYMENTS</h2>
@@ -392,15 +405,15 @@
                 data-reveal-delay="0">
                 <div class="terminal-header hidden md:block"></div>
                 <div class="p-8 md:p-12 text-center">
-                    <h2 class="font-headline-lg text-headline-lg mb-6">ESTABLISH_CONNECTION</h2>
+                    <h2 class="font-headline-lg text-headline-lg mb-6">Let's Connect</h2>
                     <p class="text-body-lg text-on-surface-variant mb-10 max-w-lg mx-auto">
-                        My inbox is always open for new opportunities, hackathons, and collaborations. Send a
-                        transmission to my secure server.
+                        I'm currently open to new opportunities, hackathons, and exciting collaborations. Whether you
+                        have a question or just want to say hi, my inbox is always open!
                     </p>
 
                     <a href="mailto:saikowshikgandikota@gmail.com?subject=Hello%20from%20your%20Portfolio!"
                         class="inline-flex items-center justify-center gap-3 bg-primary text-on-primary font-bold py-4 px-12 rounded-lg shadow-[0_0_20px_rgba(0,210,255,0.2)] hover:shadow-[0_0_30px_rgba(0,210,255,0.4)] transition-all group active:scale-95">
-                        <span class="submit-text tracking-wider">INITIATE_CONTACT</span>
+                        <span class="submit-text tracking-wider">Send an Email</span>
                         <span
                             class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
                     </a>
@@ -441,6 +454,13 @@
         const nonTechExperience = [
             { "role": "Campus Ambassador", "organization": "Unstop", "date": "Sept 2025 - May 2026", "impact": "Led campus-wide engagement initiatives and drove platform awareness." },
             { "role": "Student Ambassador", "organization": "LetsUpgrade", "date": "Aug 2025 - Sept 2025", "impact": "Promoted technical learning initiatives and upskilling programs." }
+        ];
+
+        const educationData = [
+            { "institution": "Vishnu Institute of Technology", "degree": "B.Tech in Computer Science & Engineering", "date": "2023 - 2027", "status": "ACTIVE_STATUS" },
+            { "institution": "Sri Chaitanya Junior College", "degree": "Intermediate", "date": "2021 - 2023", "status": "COMPLETED" },
+            { "institution": "Sri Chaitanya Techno School", "degree": "10th", "date": "2020 - 2021", "status": "COMPLETED" }
+
         ];
 
         // Updated Project Data with functional links
@@ -485,7 +505,7 @@
                 return `
                 <div class="glass-card rounded-xl overflow-hidden flex flex-col scroll-reveal" data-reveal-delay="${idx * 100}">
                     <div class="h-48 overflow-hidden relative group">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="${img}">
+                        <img class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" src="${img}?v=${new Date().getTime()}">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                             ${project.live ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary px-4 py-2 rounded font-label-sm font-bold shadow-[0_0_15px_rgba(0,210,255,0.4)] hover:scale-105 transition-transform">DEMO</a>` : ''}
                             <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="bg-surface text-on-surface px-4 py-2 rounded border border-outline font-label-sm font-bold hover:scale-105 transition-transform">CODE</a>
@@ -546,6 +566,33 @@
             }).join('');
         }
 
+        function renderEducation() {
+            const eduGrid = document.getElementById('education-grid');
+            if (!eduGrid) return;
+
+            eduGrid.innerHTML = educationData.map((edu, idx) => {
+                const borderAccent = idx % 2 === 0 ? 'border-primary' : 'border-secondary';
+                const textAccent = idx % 2 === 0 ? 'text-primary' : 'text-secondary';
+                const bgAccent = idx % 2 === 0 ? 'bg-primary/10' : 'bg-secondary/10';
+
+                return `
+                <div class="glass-card rounded-xl border-t-4 ${borderAccent} p-6 flex gap-4 scroll-reveal" data-reveal-delay="${idx * 100}">
+                    <div class="w-12 h-12 ${bgAccent} rounded flex items-center justify-center flex-shrink-0">
+                        <span class="material-symbols-outlined ${textAccent}">school</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-headline-lg-mobile text-headline-lg-mobile ${textAccent}">${edu.institution}</h3>
+                            <span class="tech-badge text-[10px] px-2 py-0.5 ${idx % 2 === 0 ? 'bg-primary/5 border-primary/20 text-primary' : 'bg-secondary/5 border-secondary/20 text-secondary'} font-label-sm">${edu.status}</span>
+                        </div>
+                        <p class="text-on-surface font-bold mb-1">${edu.degree}</p>
+                        <p class="text-on-surface-variant font-label-sm text-label-sm">${edu.date}</p>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
         function switchTimeline(type) {
             const container = document.getElementById('timeline-content');
             const techBtn = document.getElementById('toggle-tech');
@@ -569,20 +616,22 @@
                     const date = item.date;
                     const desc = type === 'tech' ? '' : item.impact;
                     const icon = type === 'tech' ? 'terminal' : 'groups';
+                    const isLeft = idx % 2 === 0;
 
                     const badges = type === 'tech' && item.tech
-                        ? `<div class="flex flex-wrap gap-2 mt-4 ${idx % 2 === 0 ? 'md:justify-end' : ''}">` +
+                        ? `<div class="flex flex-wrap gap-2 mt-4 ${isLeft ? 'md:justify-end' : 'md:justify-start'}">` +
                         item.tech.map(t => `<span class="tech-badge text-[10px] px-2 py-0.5 bg-primary/5 border border-primary/20 text-primary font-label-sm">${t}</span>`).join('') +
                         `</div>`
                         : '';
 
                     return `
                     <div class="relative flex flex-col md:flex-row items-center md:items-start gap-8 opacity-0 translate-y-4 transition-all duration-500 delay-[${idx * 100}ms]" style="opacity: 1; transform: translateY(0);">
+                        <!-- Desktop Dot -->
                         <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-background border-2 border-primary rounded-sm transform md:-translate-x-1/2 z-20 shadow-[0_0_10px_rgba(0,210,255,0.5)]"></div>
                         
-                        <div class="w-full md:w-1/2 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:order-2 md:pl-12'}">
+                        <div class="w-full md:w-1/2 ${isLeft ? 'md:mr-auto md:pr-12 md:text-right' : 'md:ml-auto md:pl-12 md:text-left'}">
                             <div class="glass-card p-6 rounded-lg gradient-border">
-                                <div class="flex items-center gap-3 mb-2 ${idx % 2 === 0 ? 'md:justify-end' : ''}">
+                                <div class="flex items-center gap-3 mb-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}">
                                     <span class="material-symbols-outlined text-primary text-sm">${icon}</span>
                                     <h3 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">${title}</h3>
                                 </div>
@@ -625,6 +674,7 @@
         }, { threshold: 0.15 });
 
         renderProjects();
+        renderEducation();
         renderCertifications();
         switchTimeline('tech');
 

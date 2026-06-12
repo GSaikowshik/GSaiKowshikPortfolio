@@ -479,7 +479,10 @@
             { "title": "AI Fundamentals", "issuer": "IBM", "skills": ["Artificial Intelligence", "Data Science"], "url": "https://www.credly.com/badges/f47f0d95-bd22-49a5-9074-38845e2b9e26/public_url" },
             { "title": "Python for Data Science", "issuer": "Edunet Foundation", "skills": ["Data Analysis", "Pandas"], "url": "https://www.credly.com/badges/4c530824-39ac-483d-965a-de778829b451/public_url" },
             { "title": "Web Development Fundamentals", "issuer": "IBM", "skills": ["HTML/CSS", "JavaScript"], "url": "https://www.credly.com/badges/108d2033-ef5c-4e74-bbba-ecc34feab92f/public_url" },
-            { "title": "Python for Beginners", "issuer": "Microsoft", "skills": ["Python", "Programming Fundamentals"], "url": "https://learn.microsoft.com/api/achievements/share/en-in/GANDIKOTASAIKOWSHIK/VD6FVA6M?sharingId=A25E27422C264A78" }
+            { "title": "Python for Beginners", "issuer": "Microsoft", "skills": ["Python", "Programming Fundamentals"], "url": "https://learn.microsoft.com/api/achievements/share/en-in/GANDIKOTASAIKOWSHIK/VD6FVA6M?sharingId=A25E27422C264A78" },
+            { "title": "Machine Learning Foundations", "issuer": "AWS Academy", "skills": ["Machine Learning", "AWS Cloud"], "url": "https://www.credly.com/badges/2dc671d0-0cd1-4809-8c7c-b6a2b3eff12a/public_url" },
+            { "title": "Generative AI Foundations", "issuer": "AWS Academy", "skills": ["Generative AI", "AWS Cloud"], "url": "https://www.credly.com/badges/a7b59eeb-ae44-4730-8d86-7319399f45dd/public_url" },
+            { "title": "Machine Learning for NLP", "issuer": "AWS Academy", "skills": ["NLP", "Machine Learning"], "url": "https://www.credly.com/badges/64189e5c-0f33-4692-842f-86186a886e32/public_url" }
         ];
 
         function renderProjects() {
@@ -542,7 +545,7 @@
 
                 const icon = cert.issuer.toLowerCase().includes('nvidia') ? 'verified'
                     : cert.issuer.toLowerCase().includes('ibm') ? 'database'
-                        : cert.issuer.toLowerCase().includes('google') ? 'cloud'
+                        : (cert.issuer.toLowerCase().includes('google') || cert.issuer.toLowerCase().includes('aws')) ? 'cloud'
                             : 'school';
 
                 const certUrl = cert.url ? cert.url : '#';
